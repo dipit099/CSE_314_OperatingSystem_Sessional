@@ -1,0 +1,177 @@
+diff --git a/Makefile b/Makefile
+index 62fd0f8..6a15bd6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -139,6 +139,7 @@ UPROGS=\
+ 	$U/_grind\
+ 	$U/_wc\
+ 	$U/_zombie\
++	$U/_freqall\
+ 
+ fs.img: mkfs/mkfs README $(UPROGS)
+ 	mkfs/mkfs fs.img README $(UPROGS)
+diff --git a/kernel/param.h b/kernel/param.h
+index 6624bff..a596387 100644
+--- a/kernel/param.h
++++ b/kernel/param.h
+@@ -11,3 +11,4 @@
+ #define NBUF         (MAXOPBLOCKS*3)  // size of disk block cache
+ #define FSSIZE       2000  // size of file system in blocks
+ #define MAXPATH      128   // maximum file path name
++#define DEBUG 0
+\ No newline at end of file
+diff --git a/kernel/stat.h b/kernel/stat.h
+index 19543af..5d79e90 100644
+--- a/kernel/stat.h
++++ b/kernel/stat.h
+@@ -9,3 +9,7 @@ struct stat {
+   short nlink; // Number of links to file
+   uint64 size; // Size of file in bytes
+ };
++
++struct freq_array {
++  int counts[128]; // frequency counts for ASCII chars 0 to 127
++};
+\ No newline at end of file
+diff --git a/kernel/syscall.c b/kernel/syscall.c
+index ed65409..959bebb 100644
+--- a/kernel/syscall.c
++++ b/kernel/syscall.c
+@@ -101,6 +101,7 @@ extern uint64 sys_unlink(void);
+ extern uint64 sys_link(void);
+ extern uint64 sys_mkdir(void);
+ extern uint64 sys_close(void);
++extern uint64 sys_countFreq(void);
+ 
+ // An array mapping syscall numbers from syscall.h
+ // to the function that handles the system call.
+@@ -126,6 +127,7 @@ static uint64 (*syscalls[])(void) = {
+ [SYS_link]    sys_link,
+ [SYS_mkdir]   sys_mkdir,
+ [SYS_close]   sys_close,
++[SYS_countFreq] sys_countFreq,
+ };
+ 
+ void
+diff --git a/kernel/syscall.h b/kernel/syscall.h
+index bc5f356..bdd598b 100644
+--- a/kernel/syscall.h
++++ b/kernel/syscall.h
+@@ -20,3 +20,4 @@
+ #define SYS_link   19
+ #define SYS_mkdir  20
+ #define SYS_close  21
++#define SYS_countFreq 22
+diff --git a/kernel/sysproc.c b/kernel/sysproc.c
+index 3b4d5bd..ffcb6e1 100644
+--- a/kernel/sysproc.c
++++ b/kernel/sysproc.c
+@@ -5,6 +5,7 @@
+ #include "memlayout.h"
+ #include "spinlock.h"
+ #include "proc.h"
++#include "stat.h"
+ 
+ uint64
+ sys_exit(void)
+@@ -91,3 +92,32 @@ sys_uptime(void)
+   release(&tickslock);
+   return xticks;
+ }
++
++
++uint64 sys_countFreq(void) {
++  struct freq_array a;
++  for(int i=0; i<128; i++){
++    a.counts[i] = 0;
++  }
++
++  char arr[100];
++  argstr(0,arr,100);
++
++  uint64 user_addr;
++  argaddr(1,&user_addr);
++
++  printf("Target string %s",arr);
++  printf(" (kernel space)\n");
++
++  for(int i=0; arr[i]!= '\0' ; i++){
++    int character = arr[i];
++    //printf("%d\n",character);
++    a.counts[character]++;
++
++  }
++
++  copyout(myproc()->pagetable , user_addr,(char*)&a, sizeof(a) );
++
++  return 1;
++
++}
+\ No newline at end of file
+diff --git a/user/freqall.c b/user/freqall.c
+new file mode 100644
+index 0000000..a2faf11
+--- /dev/null
++++ b/user/freqall.c
+@@ -0,0 +1,31 @@
++#include "kernel/types.h"
++#include "kernel/stat.h"
++#include "user/user.h"
++#include "kernel/param.h"
++
++int main(int argc, char* argv[]){
++    // char* str="";
++    // str =  argv
++    struct freq_array a;
++    char* str =  argv[1];
++    // if (DEBUG)
++    //         printf("input str=%s\n",str);
++
++    countFreq(str , &a );
++    
++    int userprint=1;
++
++    for(int i=0; i<128; i++){
++        if(a.counts[i] != 0 ){
++            char temp[2]="a";
++            temp[0]=(char)i;
++            printf("%s: %d",temp,a.counts[i]); 
++            if(userprint){
++                printf("  (user space)\n");
++                userprint=0;
++            }
++            else
++                printf("\n");
++        }
++    }
++}
+\ No newline at end of file
+diff --git a/user/user.h b/user/user.h
+index 04013ca..77c06c6 100644
+--- a/user/user.h
++++ b/user/user.h
+@@ -1,5 +1,5 @@
+ struct stat;
+-
++struct freq_array;
+ // system calls
+ int fork(void);
+ int exit(int) __attribute__((noreturn));
+@@ -22,6 +22,7 @@ int getpid(void);
+ char* sbrk(int);
+ int sleep(int);
+ int uptime(void);
++int countFreq(char*, struct freq_array*);
+ 
+ // ulib.c
+ int stat(const char*, struct stat*);
+diff --git a/user/usys.pl b/user/usys.pl
+index 01e426e..77cd7d0 100755
+--- a/user/usys.pl
++++ b/user/usys.pl
+@@ -36,3 +36,4 @@ entry("getpid");
+ entry("sbrk");
+ entry("sleep");
+ entry("uptime");
++entry("countFreq");
+\ No newline at end of file

@@ -1,0 +1,104 @@
+Operative 5 has arrived at typewriting station 1 at time 5
+## Operative 5 directly accessed free station 1 at time 7 ##
+Operative 5 started document recreation using station 1 at time 8
+Operative 4 has arrived at typewriting station 4 at time 6
+Intelligence Staff 2 began reviewing logbook at time 9. Operations completed = 0
+Operative 3 has arrived at typewriting station 3 at time 6
+Operative 15 has arrived at typewriting station 3 at time 11
+!! Operative 15 is waiting for station 3 at time 12 !!
+Operative 2 has arrived at typewriting station 2 at time 6
+## Operative 2 directly accessed free station 2 at time 13 ##
+Operative 2 started document recreation using station 2 at time 14
+Operative 9 has arrived at typewriting station 1 at time 8
+!! Operative 9 is waiting for station 1 at time 16 !!
+Operative 6 has arrived at typewriting station 2 at time 8
+!! Operative 6 is waiting for station 2 at time 18 !!
+## Operative 4 directly accessed free station 4 at time 9 ##
+Operative 4 started document recreation using station 4 at time 20
+Operative 12 has arrived at typewriting station 4 at time 10
+!! Operative 12 is waiting for station 4 at time 21 !!
+Operative 2 has completed document recreation at time 22
+______ Operative 2 is broadcasting availability of station 2 at time 23 ______
+Intelligence Staff 1 began reviewing logbook at time 24. Operations completed = 0
+Operative 7 has arrived at typewriting station 3 at time 8
+!! Operative 7 is waiting for station 3 at time 26 !!
+Operative 5 has completed document recreation at time 15
+______ Operative 5 is broadcasting availability of station 1 at time 27 ______
+Operative 8 has arrived at typewriting station 4 at time 8
+!! Operative 8 is waiting for station 4 at time 29 !!
+Intelligence Staff 2 began reviewing logbook at time 30. Operations completed = 0
+Operative 14 has arrived at typewriting station 2 at time 11
+!! Operative 14 is waiting for station 2 at time 32 !!
+Operative 1 has arrived at typewriting station 1 at time 6
+!! Operative 1 is waiting for station 1 at time 33 !!
+Operative 13 has arrived at typewriting station 1 at time 8
+!! Operative 13 is waiting for station 1 at time 35 !!
+Operative 4 has completed document recreation at time 27
+______ Operative 4 is broadcasting availability of station 4 at time 36 ______
+Operative 10 has arrived at typewriting station 2 at time 10
+!! Operative 10 is waiting for station 2 at time 38 !!
+** Operative 6 received signal to use station 2 at time 24 **
+Operative 6 started document recreation using station 2 at time 39
+Operative 11 has arrived at typewriting station 3 at time 8
+!! Operative 11 is waiting for station 3 at time 41 !!
+** Operative 12 received signal to use station 4 at time 37 **
+Operative 12 started document recreation using station 4 at time 43
+Intelligence Staff 1 began reviewing logbook at time 43. Operations completed = 0
+** Operative 9 received signal to use station 1 at time 28 **
+Operative 9 started document recreation using station 1 at time 45
+## Operative 3 directly accessed free station 3 at time 11 ##
+Operative 6 has completed document recreation at time 47
+______ Operative 6 is broadcasting availability of station 2 at time 48 ______
+Intelligence Staff 2 began reviewing logbook at time 48. Operations completed = 0
+Operative 3 started document recreation using station 3 at time 47
+** Operative 14 received signal to use station 2 at time 48 **
+Operative 14 started document recreation using station 2 at time 51
+Operative 12 has completed document recreation at time 51
+______ Operative 12 is broadcasting availability of station 4 at time 53 ______
+Operative 9 has completed document recreation at time 53
+______ Operative 9 is broadcasting availability of station 1 at time 54 ______
+** Operative 8 received signal to use station 4 at time 53 **
+Operative 8 started document recreation using station 4 at time 56
+** Operative 1 received signal to use station 1 at time 55 **
+Operative 1 started document recreation using station 1 at time 58
+Operative 3 has completed document recreation at time 57
+______ Operative 3 is broadcasting availability of station 3 at time 60 ______
+Operative 14 has completed document recreation at time 59
+______ Operative 14 is broadcasting availability of station 2 at time 61 ______
+Intelligence Staff 1 began reviewing logbook at time 62. Operations completed = 0
+** Operative 15 received signal to use station 3 at time 61 **
+Operative 15 started document recreation using station 3 at time 64
+** Operative 10 received signal to use station 2 at time 62 **
+Operative 10 started document recreation using station 2 at time 65
+Operative 8 has completed document recreation at time 64
+______ Operative 8 is broadcasting availability of station 4 at time 67 ______
+Operative 1 has completed document recreation at time 66
+______ Operative 1 is broadcasting availability of station 1 at time 68 ______
+Unit 1 has completed document recreation phase at time 69
+** Operative 13 received signal to use station 1 at time 69 **
+Operative 13 started document recreation using station 1 at time 71
+Intelligence Staff 2 began reviewing logbook at time 71. Operations completed = 0
+Operative 15 has completed document recreation at time 72
+______ Operative 15 is broadcasting availability of station 3 at time 73 ______
+** Operative 7 received signal to use station 3 at time 73 **
+Operative 7 started document recreation using station 3 at time 74
+Operative 10 has completed document recreation at time 73
+______ Operative 10 is broadcasting availability of station 2 at time 76 ______
+Intelligence Staff 1 began reviewing logbook at time 76. Operations completed = 0
+Operative 13 has completed document recreation at time 79
+______ Operative 13 is broadcasting availability of station 1 at time 79 ______
+Operative 7 has completed document recreation at time 82
+______ Operative 7 is broadcasting availability of station 3 at time 83 ______
+Unit 2 has completed document recreation phase at time 84
+Unit 1 has completed intelligence distribution at time 83
+** Operative 11 received signal to use station 3 at time 84 **
+Operative 11 started document recreation using station 3 at time 85
+Unit 2 has completed intelligence distribution at time 87
+Intelligence Staff 2 began reviewing logbook at time 90. Operations completed = 2
+Intelligence Staff 1 began reviewing logbook at time 91. Operations completed = 2
+Operative 11 has completed document recreation at time 95
+______ Operative 11 is broadcasting availability of station 3 at time 95 ______
+Unit 3 has completed document recreation phase at time 96
+Unit 3 has completed intelligence distribution at time 100
+Intelligence Staff 1 began reviewing logbook at time 103. Operations completed = 3
+Intelligence Staff 2 began reviewing logbook at time 104. Operations completed = 3
